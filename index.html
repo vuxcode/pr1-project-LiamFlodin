@@ -6,9 +6,20 @@
     <title>HangmanGame</title>
 </head>
 <body>
-    <h1>Take a guess!</h1>
-   <input id="letter" type=""text">
-   <input type="button" value="letter">
+   
+<div>
+<p id="attempts"></p>
+// lägg till bild
+<p id="hangmanfigure"></p>
+<p id="answer"></p>
+</div>
+
+<label for="letter">Enter a letter: </label>
+<input type="text" id="letter">
+<button onclick="letter">Guess</button>
+
+
+
 
     
     <script>
@@ -16,45 +27,29 @@
 var words = ["treehouse", "ladybug", "bicycle", "neighborhood", "elephant"];
     var randomWord = words[Math.floor(Math.random() * words.length)] ;
 
-    console.log(randomWord)
+   
 //Display initial state
 var incorrectGuesses = 0;
 var maxincorrectGuesses = 6 //Maximum number if incorrect guesses
 var lettersLeft = word.length;
 //Display word function
 
+var answer = newArray(randomWord.length).fill('_')
 
-var answer = [];
+function letter () {
+    var letter = document.getElementById("letter").value.toLowerCase();
 
-function displayWord ()
-{
-for (var i = 0; i < word.length; i++) {
-    answer[i] = "_"
+if (letter.length !== 1) {
+    
+} else if (!/[a-z]/.test(letter)) {
+   alert("You have entered a unvalid letter, please enter a single letter from a-z");
+   return;
 }
-string = answer.join(" ")
-document.getElementById("answer").innerHTML = string
 
-}
-
-//Take user input
-var guess = prompt("Guess a letter!")
-if (guess == null) {
-    alert("Please enter a letter") 
-}
-else if (guess !== 1) {
-    alert ("Please enter a single digit number")
-
-   }
-
-
-   function letter() {
-    var letter = document.getElementById("letter").value;
-
-    if (letter.length > 0) {
-        for (var i = 0; i < randomWord.length; i++) {
-            if (randomWord[i] === letter) {
-                answer[i] = letter;
-            }
+if (randomWord.includes(letter)) {
+    for (var i = 0; i < randomWord.length; i++){
+        if (randomWord[i] === letter) {
+            answer[i] = letter
         }
     }
 }
@@ -65,7 +60,15 @@ else if (guess !== 1) {
 
 
 
+
+
 </script>
 </body>
 </html>
+       
+
+
+
+
+
        
