@@ -1,1 +1,67 @@
 <!-- Start writing your project code in this file! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HangmanGame</title>
+</head>
+<body>
+    <h1>Take a guess!</h1>
+   <input id="letter" type=""text">
+   <input type="button" value="letter">
+
+    
+    <script>
+//Random word selector
+var words = ["treehouse", "ladybug", "bicycle", "neighborhood", "elephant"];
+    var randomWord = words[Math.floor(Math.random() * words.length)] ;
+
+    console.log(randomWord)
+//Display initial state
+var incorrectGuesses = 0;
+var maxincorrectGuesses = 6 //Maximum number if incorrect guesses
+var lettersLeft = word.length;
+//Display word function
+
+
+var answer = [];
+
+function displayWord ()
+{
+for (var i = 0; i < word.length; i++) {
+    answer[i] = "_"
+}
+string = answer.join(" ")
+document.getElementById("answer").innerHTML = string
+
+}
+
+//Take user input
+var guess = prompt("Guess a letter!")
+if (guess == null) {
+    alert("Please enter a letter") 
+}
+else if (guess !== 1) {
+    alert ("Please enter a single digit number")
+}
+
+function letter()
+{
+var = letter = document.getElementById("letter").value;
+if (letter.length > 0)
+
+
+
+
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>
+       
