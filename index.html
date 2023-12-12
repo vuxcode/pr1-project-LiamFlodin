@@ -9,8 +9,6 @@
    
 <div>
     <p id="attempts"></p>
-   
-    <p id="hangmanfigure"></p>
     <p id="answer"></p>
 </div>
 
@@ -32,6 +30,8 @@ var answer = Array(randomWord.length).fill('_');
 
 // Guesses lft
 var remainingAttempts = maxincorrectGuesses;
+
+progression()
 
 function letter() {
     var letter = document.getElementById("letter").value.toLowerCase();
@@ -62,7 +62,7 @@ function letter() {
         }
 
         if (wordGuessed) {
-            alert("You guessed the word: " + randomWord " congratulations!;
+            alert("You guessed the right word! It was: " + randomWord + " congratulations!");
             
         }
     } else {
@@ -75,6 +75,13 @@ function letter() {
             
         }
     }
+    progression()
+}
+    function progression() {
+    document.getElementById("attempts").innerHTML = "Remaining attempts: " + remainingAttempts;
+    document.getElementById("answer").innerHTML = answer.join(' ');
+}
+
 
 
 
