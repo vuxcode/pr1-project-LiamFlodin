@@ -8,52 +8,73 @@
 <body>
    
 <div>
-<p id="attempts"></p>
-// lägg till bild
-<p id="hangmanfigure"></p>
-<p id="answer"></p>
+    <p id="attempts"></p>
+   
+    <p id="hangmanfigure"></p>
+    <p id="answer"></p>
 </div>
 
 <label for="letter">Enter a letter: </label>
 <input type="text" id="letter">
-<button onclick="letter">Guess</button>
+<button onclick="letter()">Guess</button>
 
-
-
-
-    
-    <script>
-//Random word selector
+<script>
+// Random word selector
 var words = ["treehouse", "ladybug", "bicycle", "neighborhood", "elephant"];
-    var randomWord = words[Math.floor(Math.random() * words.length)] ;
+var randomWord = words[Math.floor(Math.random() * words.length)];
 
-   
-//Display initial state
-var incorrectGuesses = 0;
-var maxincorrectGuesses = 6 //Maximum number if incorrect guesses
-var lettersLeft = word.length;
-//Display word function
+// Display initial state
+var maxincorrectGuesses = 6; // Maximum number of incorrect guesses
+var lettersLeft = randomWord.length;
 
-var answer = newArray(randomWord.length).fill('_')
+// Display word 
+var answer = Array(randomWord.length).fill('_');
 
-function letter () {
+// Guesses lft
+var remainingAttempts = maxincorrectGuesses;
+
+function letter() {
     var letter = document.getElementById("letter").value.toLowerCase();
 
-if (letter.length !== 1) {
-    
-} else if (!/[a-z]/.test(letter)) {
-   alert("You have entered a unvalid letter, please enter a single letter from a-z");
-   return;
-}
+    if (letter.length !== 1) {
+        alert("You have entered an invalid letter. Please enter a single letter from a-z");
+        return;
+    } else if (!/[a-z]/.test(letter)) {
+        alert("You have entered an invalid letter. Please enter a single letter from a-z");
+        return;
+    }
 
-if (randomWord.includes(letter)) {
-    for (var i = 0; i < randomWord.length; i++){
-        if (randomWord[i] === letter) {
-            answer[i] = letter
+    if (randomWord.includes(letter)) {
+        for (var i = 0; i < randomWord.length; i++) {
+            if (randomWord[i] === letter) {
+                answer[i] = letter;
+            }
+        }
+        
+        // Checking for win condition
+        let wordGuessed = true;
+
+        for (let i = 0; i < answer.length; i++) {
+            if (answer[i] === '_') {
+                wordGuessed = false;
+                break;
+            }
+        }
+
+        if (wordGuessed) {
+            alert("You guessed the word: " + randomWord " congratulations!;
+            
+        }
+    } else {
+        // Updating lose conditions
+        remainingAttempts--;
+
+        // Checking for lose conditions
+        if (remainingAttempts === 0) {
+            alert("You lost! The correct word was: " + randomWord);
+            
         }
     }
-}
-
 
 
 
