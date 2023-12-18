@@ -1,7 +1,4 @@
 # Bug List
-
-> Make a list of the things that don't work as expected. Keep a list of things that you have fixed and try to document how you solved them.
-
 Bug in random word selection:
 I tried to make the game pick a random word, but sometimes it was picking weird numbers, like 3.75, instead of just a whole number.
 
